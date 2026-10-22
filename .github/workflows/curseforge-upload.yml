@@ -1,0 +1,60 @@
+name: CurseForge upload
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - file: dist/AFKFarm-1.0.2-neoforge-1.21.11.jar
+            name: AFKFarm 1.0.2 - NeoForge 1.21.11
+            versions: "1.21.11,NeoForge,Java 21"
+            relations: ""
+          - file: dist/AFKFarm-1.0.2-neoforge-26.1.2.jar
+            name: AFKFarm 1.0.2 - NeoForge 26.1.2
+            versions: "26.1.2,NeoForge,Java 25"
+            relations: ""
+          - file: dist/AFKFarm-1.0.2-neoforge-26.2.jar
+            name: AFKFarm 1.0.2 - NeoForge 26.2
+            versions: "26.2,NeoForge,Java 25"
+            relations: ""
+          - file: dist/AFKFarm-1.0.2-fabric-1.21.11.jar
+            name: AFKFarm 1.0.2 - Fabric 1.21.11
+            versions: "1.21.11,Fabric,Java 21"
+            relations: "fabric-api:requiredDependency"
+          - file: dist/AFKFarm-1.0.2-fabric-26.1.2.jar
+            name: AFKFarm 1.0.2 - Fabric 26.1.2
+            versions: "26.1.2,Fabric,Java 25"
+            relations: "fabric-api:requiredDependency"
+          - file: dist/AFKFarm-1.0.2-fabric-26.2.jar
+            name: AFKFarm 1.0.2 - Fabric 26.2
+            versions: "26.2,Fabric,Java 25"
+            relations: "fabric-api:requiredDependency"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload to CurseForge
+        uses: itsmeow/curseforge-upload@v3
+        with:
+          token: ${{ secrets.CF_API_TOKEN }}
+          project_id: "1758945"
+          game_endpoint: "minecraft"
+          file_path: ${{ matrix.file }}
+          game_versions: ${{ matrix.versions }}
+          release_type: "beta"
+          display_name: ${{ matrix.name }}
+          changelog_type: "markdown"
+          changelog: |
+            AFKFarm 1.0.2
+            - NeoForge 1.21.11 / 26.1.2 / 26.2
+            - Fabric 1.21.11 / 26.1.2 / 26.2
+            - Core behavior same as 1.0.1; see GitHub README.
+            - Tested via PCL: 1.21.11 NeoForge, 26.2 NeoForge, 26.2 Fabric.
+            - Untested: 26.1.2 NeoForge/Fabric, 1.21.11 Fabric.
+            - Forge not included.
+          relations: ${{ matrix.relations }}
