@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.qiaosylveon.afkfarm.fabric.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftUseMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,21 @@
+# local toolchains and downloaded loader metadata
+metadata/
+build/
+projects/*/build/
+projects/*/.gradle/
+.gradle/
+
+# local test artifacts
+test-clients/
+*.args
+*.log
+
+# Forge targets are not part of 1.0.2
+loaders/forge/
+projects/forge-*/
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+Thumbs.db

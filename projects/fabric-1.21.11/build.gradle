@@ -1,0 +1,67 @@
+plugins {
+    id 'net.fabricmc.fabric-loom-remap' version '1.18-SNAPSHOT'
+}
+
+version = '1.0.2'
+group = 'com.qiaosylveon'
+
+base {
+    archivesName = 'AFKFarm-1.0.2-fabric-1.21.11'
+}
+
+repositories {
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.21.11"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:0.19.5"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.141.6+1.21.11"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs += [
+                file('../../common/src/main/java'),
+                file('../../versions/1.21.11/src/main/java'),
+                file('../../loaders/fabric/src/main/java')
+            ]
+        }
+        resources {
+            srcDirs += [
+                file('../../common/src/main/resources'),
+                file('src/main/resources')
+            ]
+        }
+    }
+}
+
+loom {
+    mods {
+        "afkfarm" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+processResources {
+    inputs.property 'version', project.version
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}

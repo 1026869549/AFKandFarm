@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[11,)"
+license = "MIT"
+
+[[mods]]
+modId = "afkfarm"
+version = "1.0.2"
+displayName = "AFK Farm (挂机收菜)"
+authors = "QiaoSylveon"
+description = '''
+Client-side AFK look rotation and potato/carrot harvest + replant. Compile-only multi-version build.
+客户端专用，服务端无需安装。
+'''
+logoFile = "icon.png"
+iconFile = "icon.png"
+clientSideOnly = "true"
+displayTest = "IGNORE_ALL_VERSION"
+
+[[dependencies.afkfarm]]
+modId = "minecraft"
+type = "required"
+versionRange = "[26.2,26.3)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.afkfarm]]
+modId = "neoforge"
+type = "required"
+versionRange = "[26.2.0,)"
+ordering = "NONE"
+side = "CLIENT"

@@ -1,0 +1,7 @@
+{
+  "key.afkfarm.toggle": "切换挂机视角旋转",
+  "msg.afkfarm.afk_on": "挂机视角旋转：开启（每 10 秒右转 5°）",
+  "msg.afkfarm.afk_off": "挂机视角旋转：关闭",
+  "msg.afkfarm.no_seed": "背包里没有对应的种子（马铃薯/胡萝卜）",
+  "msg.afkfarm.no_tool": "请主手持工具/物品后再收割"
+}

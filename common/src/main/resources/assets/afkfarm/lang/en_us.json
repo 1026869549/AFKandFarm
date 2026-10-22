@@ -1,0 +1,7 @@
+{
+  "key.afkfarm.toggle": "Toggle AFK Look Rotation",
+  "msg.afkfarm.afk_on": "AFK look rotation: ON (+5° every 10s)",
+  "msg.afkfarm.afk_off": "AFK look rotation: OFF",
+  "msg.afkfarm.no_seed": "No matching seed in your inventory (potato/carrot)",
+  "msg.afkfarm.no_tool": "Hold a tool or item in your main hand to harvest"
+}
